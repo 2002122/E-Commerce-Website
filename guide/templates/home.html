@@ -1,0 +1,132 @@
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'login' %}">
+    <style>  
+ * {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url();
+  width: 100%;
+  height: 100dvh;
+  display: fLex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-color: white;
+}
+
+.container {
+  background: #D4A300;
+  width: 320px;
+  padding: 24px;
+  border-radius: 16px;
+  border: solid 5px rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  box-shadow: Opx 0px 30px 20px rgb(0, 0, 0, 0.1);
+  
+  display: fLex;
+  flex-direction: coLumn;
+  align-items: center;
+  background-color:rgb(230, 181, 22);
+  color: white;
+}
+
+.login-title {
+  margin-bottom: 16px;
+}
+
+.input-box {
+  display: fLex;
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px 16px 10px 38px;
+  border-radius: 99px;
+  border: solid;
+  background: white;
+  caret-color: white;
+  color: rgb(255, 249, 249);
+  font-weight: 500;
+  transition: 0.25s;
+  font-size: medium;
+}
+
+
+
+.input-box input::placeholder {
+  color: #D4A300;
+  font-size: large;
+  font-family: monospace;
+}
+
+.input-box input::-ms-reveal {
+  filter: invert(100%);
+}
+
+.input-box i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 14px;
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 18px;
+  transition: 0.25s;
+}
+
+.login-button {
+  width: 50%;
+  margin-top: 24px;
+  padding: 10px 0;
+  background: white;
+  border: none;
+  border-radius: 99px;
+  color: #D4A300;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  outline: transparent 3px solid;
+  transition: 0.1s;
+}
+
+.login-button:focus {
+  outline: #32CDD58A 3px solid;
+}
+
+
+.login-button:hover{
+    color: rgb(4, 3, 3);
+}
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="{% url 'login' %}" class="container">
+      {% csrf_token %}
+  <h1 class="login-title">Admin</h1>
+
+  <section class="input-box">
+    <input type="text" name="user" placeholder="Username">
+    <i class="bx bxs-user"></i>
+  </section>
+
+  <section class="input-box">
+    <input type="password" name="pass" placeholder="Password">
+    <i class="bx bxs-lock-alt"></i>
+  </section>
+
+  <button class="login-button" type="submit">
+    Login
+  </button>
+</form>
+  </body>
+</html>

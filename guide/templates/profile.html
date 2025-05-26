@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #2980B9;
+            color: white;a
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        /* Profile Container */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .profile-card {
+            background-color: white;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #2C3E50;
+        }
+
+        .profile-header p {
+            color: #7F8C8D;
+            font-size: 16px;
+        }
+
+        .profile-details {
+            margin-top: 30px;
+        }
+
+        .profile-details h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2C3E50;
+        }
+
+        .profile-details p {
+            font-size: 18px;
+            color: #34495E;
+        }
+
+        .update-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #2980B9;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .update-button:hover {
+            background-color: #1D6B92;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2C3E50;
+        }
+
+        .contact-info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .contact-info ul li {
+            font-size: 18px;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>User Profile</h1>
+    </div>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+        <div class="profile-card">
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <img src="{% static 'image/bg3.jpg' %}" alt="Profile Picture">
+                <div>
+                    <h2>{{ user.username }}</h2>
+                    <p>Member since : 2025 feb
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="profile-details">
+                <h3>Profile Information</h3>
+                <p><strong>Name:</strong> Arul Infant <p>
+                <p><strong>Email:</strong> arultrago3@gmail.com</p>
+                <p><strong>Bio:</strong> </p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><strong>Phone:</strong>9988776655</li>
+                    <li><strong>Address:</strong> INDIA</li>
+                </ul>
+            </div>
+
+            <!-- Update Profile Button -->
+            <a href="#" class="update-button">Edit Profile</a>
+
+        </div>
+    </div>
+
+</body>
+</html>

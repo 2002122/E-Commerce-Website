@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>INFO</h1>
+
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Edit</th>
+            <th>delete</th>
+        </tr>
+        {% for file in details %}
+        <tr>
+            <td>{{ file.product_name }}</td>
+            <td>{{ file.price }}</td>
+            <td>{{ file.quantity }}</td>
+            <td>{{ file.category }}</td>
+            <td>{{ file.description }}</td>
+            <td>
+                {% if file.image_url %}
+                    <img src="{{ file.image_url.url }}" alt="Product Image">
+                {% else %}
+                    No Image Available
+                {% endif %}
+            </td>
+            <td> <a href="{% url 'edit' file.id %}">EDIT</td>
+            <td><a href="{% url 'delete' file.id %}">DELETE</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

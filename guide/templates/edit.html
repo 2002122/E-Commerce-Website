@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Navbar */
+      .navbar {
+        background-color: #2980b9;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+      }
+      
+      /* Form Container */
+      .form-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      
+      .form-card {
+        background-color: white;
+        width: 80%;
+        max-width: 900px;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .form-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .form-header h2 {
+        font-size: 28px;
+        color: #2c3e50;
+      }
+      
+      label {
+        font-size: 16px;
+        color: #34495e;
+        display: block;
+        margin-bottom: 5px;
+      }
+      
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      
+      input[type='file'] {
+        padding: 5px;
+      }
+      
+      .submit-btn {
+        background-color: #2980b9;
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        width: 200px;
+        margin: 0 auto;
+        border: none;
+      }
+      
+      .submit-btn:hover {
+        background-color: #1d6b92;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <h1>Product Edit Form</h1>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+      <div class="form-card">
+        <!-- Form Header -->
+        <div class="form-header">
+          <h2>Enter Product Details</h2>
+        </div>
+
+        <!-- Product Form -->
+        <form action="{% url 'update' editpr.id %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- Product Name -->
+          <div class="form-group">
+            <label for="product-name">Product Name</label>
+            <input type="text" id="product-name" name="product_name" required value="{{editpr.product_name}}">
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="">{{editpr.category}}</option>
+              <option value="electronics">Electronics</option>
+              <option value="fashion">Fashion</option>
+              <option value="home-appliance">HomeAppliance</option>
+              <option value="books">Books</option>
+              <option value="jewellery">Jewellery</option>
+            </select>
+          </div>
+
+          <!-- Product Image -->
+          <div class="form-group">
+            <label for="image">Product Image</label>
+            <input type="file" id="image" name="image" accept="image/*" required  value=""/>
+            {% if editpr.image_url %}
+                    <img src="{{ editpr.image_url.url }}" alt="Product Image">
+                {% else %}
+                    No Image Available
+                {% endif %}
+          </div>
+
+          <!-- Price -->
+          <div class="form-group">
+            <label for="price">Price ($)</label>
+            <input type="number" id="price" name="price" step="0.01" required  value="{{editpr.price}}"/>
+          </div>
+
+          <!-- Quantity -->
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" required value="{{editpr.quantity}}"/>
+          </div>
+
+          <!-- Product Description -->
+          <div class="form-group">
+            <label for="description">Product Description</label>
+            <textarea id="description" name="description" rows="4" required >{{editpr.description}}</textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Submit Product</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
